@@ -19,6 +19,7 @@ local function findExternalWaterSource(object)
 			-- if instanceof(objectOnSquare, "IsoThumpable") then
 			local sprite = objectOnSquare:getSprite()
 
+			---@diagnostic disable-next-line: undefined-field
 			-- Note: intentionally removes !object.getUsesExternalWaterSource()
 			if (not sprite or not sprite.solidfloor) and objectOnSquare:getFluidCapacity() > 0 then
 				return objectOnSquare
@@ -59,7 +60,6 @@ local function findExternalWaterSource(object)
 				source = findWaterSourceOnSquare(sourceSquare)
 
 				if source then
-					---@diagnostic disable-next-line: undefined-field
 					if source:hasFluid() then
 						return source
 					end
