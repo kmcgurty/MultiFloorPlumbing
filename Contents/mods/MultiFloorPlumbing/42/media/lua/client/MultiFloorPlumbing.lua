@@ -18,10 +18,11 @@ function ISWorldObjectContextMenuLogic.fetch(fetch, v, ...)
 		if restore == nil then return end
 
 		if object:getUsesExternalWaterSource() then
-			-- Object is plumbed, so we can restore it immediately
+			-- Object is plumbed, so we can restore the external source state
+			-- immediately
 			restore()
 		else
-			-- Object is unplumbed, so we restore its state
+			-- Object is unplumbed, so we restore the external source state
 			-- after calling the original fetch.
 			-- This is needed for the "plumb" context option to work.
 			table.insert(restores, restore)
