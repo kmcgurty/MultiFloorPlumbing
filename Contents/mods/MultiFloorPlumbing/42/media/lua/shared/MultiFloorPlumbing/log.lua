@@ -6,7 +6,10 @@ local function log(...)
 		args[i] = tostring(select(i, ...))
 	end
 
-	DebugLog.log("[MultiFloorPlumbing] " .. table.concat(args, " "))
+	local where = "client"
+	if(isServer()) then where = "server" end
+
+	DebugLog.log("[MultiFloorPlumbing (" .. where .. ")] " .. table.concat(args, " "))
 end
 
 return log
