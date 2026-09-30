@@ -36,5 +36,10 @@ Plumbing in Project Zomboid is extremely complex. Notably, every time you reques
 
 The actual details are more complex than that, so I urge you to read the source code. You can find it here: https://github.com/kmcgurty/MultiFloorPlumbing
 
+[h2]Compatibility[/h2]
+Works in singleplayer and multiplayer b42. Tested on build 42.21.0.
+
+If any of the code around plumbing changes, this mod will very likely break. It's extremely specific to the game's current logic, and takes advantage of a couple Java functions. It is probably unwise to combine multiple plumbing mods.
+
 Workshop ID: 3810508393
 Mod ID: MultiFloorPlumbing
