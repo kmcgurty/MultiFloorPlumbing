@@ -39,7 +39,6 @@ The actual details are more complex than that, so I urge you to read the source 
 [h2]Compatibility[/h2]
 Works in singleplayer and multiplayer b42. Tested on build 42.21.0.
 
-If any of the code around plumbing changes, this mod will very likely break. It's extremely specific to the game's current logic, and takes advantage of a couple Java functions. It is probably unwise to combine multiple plumbing mods.
+Tested with all 4 rain barrel types, a washer machine, and 2 types of sinks.
 
-Workshop ID: 3810508393
-Mod ID: MultiFloorPlumbing
+If any of the code around plumbing changes, this mod will very likely break. It's extremely specific to the game's current logic, and takes advantage of a couple Java functions. It is probably unwise to combine multiple plumbing mods.
