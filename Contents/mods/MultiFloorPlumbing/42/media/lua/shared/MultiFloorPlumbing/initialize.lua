@@ -7,7 +7,12 @@ require "TimedActions/ISToggleComboWasherDryer"
 
 MultiFloorPlumbing = MultiFloorPlumbing
 	or {
-		plumbables = { "RainCollectorRound" }, -- TODO: add more
+		plumbables = {
+			"RainCollector",
+			"RainCollector_Tarp",
+			"RainCollectorRound",
+			"RainCollectorRound_Tarp"
+		},
 		ISWorldObjectContextMenuLogic_fetch = ISWorldObjectContextMenuLogic.fetch,
 		ISTakeWaterAction_new = ISTakeWaterAction.new,
 		ISWashClothing_new = ISWashClothing.new,
