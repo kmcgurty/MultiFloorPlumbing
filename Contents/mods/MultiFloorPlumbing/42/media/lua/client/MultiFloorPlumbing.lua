@@ -36,4 +36,22 @@ function ISWorldObjectContextMenuLogic.fetch(fetch, v, ...)
 	end)
 end
 
+function ISMoveableSpriteProps:getInfoPanelFlagsPerTile(square, object, player, mode)
+	local result = MultiFloorPlumbing.ISMoveableSpriteProps_getInfoPanelFlagsPerTile(self, square, object, player, mode)
+	if mode == "pickup" and self.isWaterCollector and object:getUsesExternalWaterSource() then
+		InfoPanelFlags.hasWater = false
+	end
+	return result
+end
+
+function ISMoveableSpriteProps:canPickUpMoveableInternal(character, square, object, isMulti)
+	local result = MultiFloorPlumbing.ISMoveableSpriteProps_canPickUpMoveableInternal(
+		self, character, square, object, isMulti
+	)
+	if object and self.isWaterCollector and object:getUsesExternalWaterSource() then
+		return true
+	end
+	return result
+end
+
 log("Mod loaded.")

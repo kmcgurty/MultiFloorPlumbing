@@ -1,3 +1,4 @@
+require "Moveables/ISMoveableSpriteProps"
 require "TimedActions/ISTakeWaterAction"
 require "TimedActions/ISWashClothing"
 require "TimedActions/ISWashYourself"
@@ -14,6 +15,8 @@ MultiFloorPlumbing = MultiFloorPlumbing
 			"RainCollectorRound_Tarp"
 		},
 		ISWorldObjectContextMenuLogic_fetch = ISWorldObjectContextMenuLogic.fetch,
+		ISMoveableSpriteProps_getInfoPanelFlagsPerTile = ISMoveableSpriteProps.getInfoPanelFlagsPerTile,
+		ISMoveableSpriteProps_canPickUpMoveableInternal = ISMoveableSpriteProps.canPickUpMoveableInternal,
 		ISTakeWaterAction_new = ISTakeWaterAction.new,
 		ISWashClothing_new = ISWashClothing.new,
 		ISWashYourself_new = ISWashYourself.new,
