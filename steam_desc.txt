@@ -15,7 +15,7 @@ I'll try to get screenshots at some point. For now:
 4. Place a sink directly below the last barrel
 5. Plumb them all together.
 
-The plumbing order doesn't matter, but top -> down will be the most reliable.
+The plumbing order doesn't matter, but bottom -> up (sink to roof) will be the most reliable.
 
 If you need to reset the "plumbed" status of an object, pick it up and place it down. After placing it, you'll have the option to plumb it again.
 
