@@ -7,13 +7,11 @@ This mod slightly changes the logic around plumbing, making it so you can chain 
 My kitchen is in a basement, and I was disappointed I couldn't get water to my sink. The other mods (LG Plumbing) are either: AI generated, or too OP.
 
 [h2]Instructions[/h2]
-I'll try to get screenshots at some point. For now:
-
 1. Place a rain barrel on your roof
 2. Place a rain barrel directly below it (same tile X, Y)
 3. Repeat #2 as many times as you wish
 4. Place a sink directly below the last barrel
-5. Plumb them all together.
+5. Plumb them all together using a pipe wrench
 
 The plumbing order doesn't matter, but bottom -> up (sink to roof) will be the most reliable.
 
