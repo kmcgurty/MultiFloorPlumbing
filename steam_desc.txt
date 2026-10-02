@@ -19,9 +19,6 @@ The plumbing order doesn't matter, but bottom -> up (sink to roof) will be the m
 
 If you need to reset the "plumbed" status of an object, pick it up and place it down. After placing it, you'll have the option to plumb it again.
 
-[h2]Limitations[/h2]
-Unfortunately, the 3x3 check does not work past 1 floor level. The barrel coordinates (X, Y) need to match for it to recognize them as a water source. This is a hard limitation that can't be bypassed in a Lua mod.
-
 [h2]Future Plans[/h2]
 This mod works exactly how I wish it did in the vanilla game. However, the plumbing menu is still dog cheeks. It's very unclear when you can and can't plumb something, and why you can't get water from a sink.
 
