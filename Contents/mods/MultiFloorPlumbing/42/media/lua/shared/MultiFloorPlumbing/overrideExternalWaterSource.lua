@@ -1,5 +1,4 @@
 local log = require("MultiFloorPlumbing/log")
-local each = require("MultiFloorPlumbing/each")
 
 local function setWaterPiped(object)
 	local sprite = object:getSprite()
