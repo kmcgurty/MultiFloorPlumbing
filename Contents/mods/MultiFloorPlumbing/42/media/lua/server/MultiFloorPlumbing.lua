@@ -44,4 +44,14 @@ function ISToggleComboWasherDryer:complete()
 	return result
 end
 
+function ISMoveableSpriteProps:canPickUpMoveableInternal(character, square, object, isMulti)
+	local result = MultiFloorPlumbing.ISMoveableSpriteProps_canPickUpMoveableInternal(
+		self, character, square, object, isMulti
+	)
+	if self.isWaterCollector and object and object:getUsesExternalWaterSource() then
+		return true
+	end
+	return result
+end
+
 log("Mod loaded.")
