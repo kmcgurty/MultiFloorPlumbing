@@ -93,6 +93,7 @@ local function findExternalWaterSource(object)
 	return empty
 end
 
+-- TODO: remove logging
 -- Returned function will restore the state of the external source
 ---@param object    IsoObject
 ---@param iteration number?
@@ -118,15 +119,16 @@ local function overrideExternalWaterSource(object, iteration)
 
 	log(iteration, "Found an external source. ", externalSource)
 
+	local externalUsesExternal = externalSource:getUsesExternalWaterSource()
 	---@type function?
-	local restore = nil
+	local externalRestore = nil
 
-	if externalSource:getUsesExternalWaterSource() then
+	if externalUsesExternal then
 		log(iteration, "External source uses an external source. Iterating...")
-		restore = overrideExternalWaterSource(externalSource, iteration + 1)
+		externalRestore = overrideExternalWaterSource(externalSource, iteration + 1)
 	else
 		log(iteration, "External source does not use an external source")
-		return restore
+		return
 	end
 
 	log(iteration, "Overriding external water source state", externalSource)
@@ -141,8 +143,8 @@ local function overrideExternalWaterSource(object, iteration)
 
 	return function ()
 		log(iteration, "Restoring external water source state", externalSource)
-		externalSource:setUsesExternalWaterSource(true)
-		if restore then restore() end
+		externalSource:setUsesExternalWaterSource(externalUsesExternal)
+		if externalRestore then externalRestore() end
 	end
 end
 
