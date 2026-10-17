@@ -8,12 +8,6 @@ require "TimedActions/ISToggleComboWasherDryer"
 
 MultiFloorPlumbing = MultiFloorPlumbing
 	or {
-		plumbables = {
-			"RainCollector",
-			"RainCollector_Tarp",
-			"RainCollectorRound",
-			"RainCollectorRound_Tarp"
-		},
 		ISWorldObjectContextMenuLogic_fetch = ISWorldObjectContextMenuLogic.fetch,
 		ISMoveableSpriteProps_getInfoPanelFlagsPerTile = ISMoveableSpriteProps.getInfoPanelFlagsPerTile,
 		ISMoveableSpriteProps_canPickUpMoveableInternal = ISMoveableSpriteProps.canPickUpMoveableInternal,

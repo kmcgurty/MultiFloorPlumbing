@@ -1,25 +1,5 @@
 local log = require("MultiFloorPlumbing/log")
-
-local function setWaterPiped(object)
-	local sprite = object:getSprite()
-	if sprite == nil then return false end
-
-	local props = sprite:getProperties()
-	local objectName = object:getName()
-
-	-- Set waterPiped on sprites that normally don't have it set (RainCollector)
-	if not props:has(IsoFlagType.waterPiped) then
-		for _, plumbableName in ipairs(MultiFloorPlumbing.plumbables) do
-			if objectName == plumbableName then
-				log("Marking", objectName, "as plumbable")
-				props:set(IsoFlagType.waterPiped)
-				return true
-			end
-		end
-	end
-
-	return props:has(IsoFlagType.waterPiped)
-end
+local isWaterPiped = require("MultiFloorPlumbing/isWaterPiped")
 
 ---@param square IsoGridSquare
 ---@return IsoObject | nil
@@ -32,10 +12,9 @@ local function findWaterSourceOnSquare(square)
 		local object = objectsOnSquare:get(i)
 		local sprite = object:getSprite()
 
-		local isWaterPiped = setWaterPiped(object)
 		---@diagnostic disable-next-line: undefined-field
 		if not sprite or not sprite.solidfloor then
-			if isWaterPiped then
+			if isWaterPiped(object) then
 				return object
 			end
 		end
@@ -92,21 +71,15 @@ local function findExternalWaterSource(object)
 	return empty
 end
 
--- TODO: remove logging
 -- Returned function will restore the state of the external source
 ---@param object    IsoObject
 ---@param iteration number?
 ---@return fun() | nil
 local function overrideExternalWaterSource(object, iteration)
 	if object == nil then return end
-
 	if iteration == nil then iteration = 0 end
 
-	local sprite = object:getSprite()
-	if sprite == nil then return end
-
-	local isWaterPiped = setWaterPiped(object)
-	if not isWaterPiped then return end
+	if not isWaterPiped(object) then return end
 
 	log(iteration, "Searching", object, " for an external source")
 

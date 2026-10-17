@@ -1,6 +1,8 @@
 require "MultiFloorPlumbing/initialize"
 local log = require("MultiFloorPlumbing/log")
+local updateFluidMenu = require("MultiFloorPlumbing/updateFluidMenu")
 local each = require("MultiFloorPlumbing/each")
+local isWaterPiped = require("MultiFloorPlumbing/isWaterPiped")
 local overrideExternalWaterSource = require("MultiFloorPlumbing/overrideExternalWaterSource")
 
 -- Overriding fetch on the client is required for plumbing
