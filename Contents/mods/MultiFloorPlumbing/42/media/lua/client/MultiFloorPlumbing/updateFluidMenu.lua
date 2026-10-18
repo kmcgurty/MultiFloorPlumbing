@@ -15,7 +15,16 @@ local function removePlumbOption(menu, object)
 	local option = menu:getOptionFromName(plumbText)
 	if option == nil then return nil end
 
-	local removedOption = { onSelect = option.onSelect, notAvailable = option.notAvailable, tooltip = option.toolTip }
+	local removedOption = {
+		onSelect = option.onSelect,
+		notAvailable = option.notAvailable,
+		tooltip = option.toolTip,
+		target = option.target,
+		param1 = option.param1,
+		param2 = option.param2,
+		param3 = option.param3,
+		param4 = option.param4
+	}
 	menu:removeOptionByName(plumbText)
 	return removedOption
 end
@@ -26,7 +35,7 @@ local function removeContainerInfoOption(menu)
 	local option = menu:getOptionFromName(containerInfoText)
 	if not option then return nil end
 
-	local removedOption = { onSelect = option.onSelect, param1 = option.param1, target = option.target }
+	local removedOption = { onSelect = option.onSelect, target = option.target, param1 = option.param1 }
 	menu:removeOptionByName(containerInfoText)
 	return removedOption
 end
@@ -79,21 +88,27 @@ local function updateFluidMenu(menu, object)
 	local plumbText = getText("ContextMenu_PlumbItem", "")
 	local removedPlumbOption = removePlumbOption(menu, object)
 	if removedPlumbOption then
-		local plumbOption = subMenu:addOptionOnTop(
-			plumbText, subMenu, removedPlumbOption.onSelect, subMenu.player, object
-		)
+		local plumbOption = subMenu:addOptionOnTop(plumbText)
+		plumbOption.target = removedPlumbOption.target
+		plumbOption.onSelect = removedPlumbOption.onSelect
+		plumbOption.param1 = removedPlumbOption.param1
+		plumbOption.param2 = removedPlumbOption.param2
+		plumbOption.param3 = removedPlumbOption.param3
+		plumbOption.param4 = removedPlumbOption.param4
 		plumbOption.iconTexture = Texture.getSharedTexture("Item_PipeWrench")
 		plumbOption.notAvailable = removedPlumbOption.notAvailable
 		plumbOption.toolTip = removedPlumbOption.tooltip
 	end
 
-	-- info tooltip
+	-- Info tooltip
 	local infoTooltip = ISWorldObjectContextMenu.addToolTip()
 	infoTooltip:setName(objectName .. " " .. getText("ContextMenu_Info"))
 	infoTooltip.description = "WIP"
 
+	-- Move the container info to the top, and attach the tooltip
 	local infoOption
 	if #subMenu.options >= 1 then
+		-- Add on top fails when menu is empty
 		infoOption = subMenu:addOptionOnTop(getText("ContextMenu_Info"))
 	else
 		infoOption = subMenu:addOption(getText("ContextMenu_Info"))
