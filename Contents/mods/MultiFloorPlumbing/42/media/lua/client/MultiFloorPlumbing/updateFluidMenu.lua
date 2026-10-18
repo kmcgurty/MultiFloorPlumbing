@@ -10,7 +10,6 @@ local function removePlumbOption(menu, object)
 	local objectName = Translator.getMoveableDisplayName(object)
 	if objectName == nil then return nil end
 
-	---@diagnostic disable-next-line: param-type-mismatch
 	local plumbText = Translator.getText("ContextMenu_PlumbItem", objectName)
 	local option = menu:getOptionFromName(plumbText)
 	if option == nil then return nil end

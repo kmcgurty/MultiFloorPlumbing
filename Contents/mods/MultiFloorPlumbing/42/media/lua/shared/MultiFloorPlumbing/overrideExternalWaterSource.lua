@@ -12,7 +12,6 @@ local function findWaterSourceOnSquare(square)
 		local object = objectsOnSquare:get(i)
 		local sprite = object:getSprite()
 
-		---@diagnostic disable-next-line: undefined-field
 		if not sprite or not sprite.solidfloor then
 			if isWaterPiped(object) then
 				return object
@@ -41,7 +40,6 @@ local function findExternalWaterSource(object)
 	local source = findWaterSourceOnSquare(sourceSquare)
 
 	if source then
-		---@diagnostic disable-next-line: undefined-field
 		if source:hasFluid() then
 			return source
 		end
