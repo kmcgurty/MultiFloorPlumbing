@@ -46,4 +46,28 @@ function ISMoveableSpriteProps:getInfoPanelFlagsPerTile(square, object, player, 
 	return result
 end
 
+---@param playerId     integer
+---@param menu         ISContextMenu
+---@param worldObjects IsoObject[]
+---@param test         boolean
+local function OnFillWorldObjectContextMenu(playerId, menu, worldObjects, test)
+	if not worldObjects or (#worldObjects < 1) then
+		return
+	end
+
+	-- https://pzwiki.net/wiki/OnFillWorldObjectContextMenu
+	local firstObject = worldObjects[1]
+	if not firstObject then return end
+
+	local square = firstObject:getSquare()
+	if not square then return end
+
+	each(square:getObjects(), function (object)
+		if not isWaterPiped(object) then return end
+		updateFluidMenu(menu, object)
+	end)
+end
+
+Events.OnFillWorldObjectContextMenu.Add(OnFillWorldObjectContextMenu)
+
 log("Mod loaded.")
