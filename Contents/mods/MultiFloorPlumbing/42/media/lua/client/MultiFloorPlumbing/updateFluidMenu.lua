@@ -104,8 +104,6 @@ local function updateFluidMenu(menu, object)
 	-- Info tooltip
 	local infoTooltip = ISWorldObjectContextMenu.addToolTip()
 	infoTooltip:setName(objectName .. " " .. getText("ContextMenu_Info"))
-
-	-- TODO: inform player to equip a pipe wrench to view the plumbing helper
 	infoTooltip.description = "WIP"
 
 	if not wrenchInInventory then
