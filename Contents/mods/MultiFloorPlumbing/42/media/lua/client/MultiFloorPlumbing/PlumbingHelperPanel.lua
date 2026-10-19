@@ -82,7 +82,7 @@ function PlumbingHelperPanel:getSquareState(x, y, z)
 		if isWaterPiped(object) then
 			if object:getUsesExternalWaterSource() then
 				return SquareStatus.PLUMBED
-			elseif instanceof(object, "IsoThumpable") then
+			elseif instanceof(object, "IsoThumpable") and not square:isInARoom() then
 				if object:getFluidContainer():getAmount() > 0 then
 					return SquareStatus.VALID_SOURCE
 				else
