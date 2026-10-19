@@ -78,7 +78,9 @@ local function updateFluidMenu(menu, object)
 	end)
 
 	if wrenchInInventory ~= nil or MultiFloorPlumbing.activePlumbingHelperPanel ~= nil then
-		local plumbingHelperOption = subMenu:addOptionOnTop("Open plumbing helper", subMenu, PlumbingHelperPanel.open)
+		local plumbingHelperOption = subMenu:addOptionOnTop(
+			"Open plumbing helper", menu.player, PlumbingHelperPanel.open, object
+		)
 		plumbingHelperOption.iconTexture = getTexture("media/ui/emotes/back_green.png")
 		plumbingHelperOption.isDisabled = (MultiFloorPlumbing.activePlumbingHelperPanel ~= nil)
 	end
@@ -102,6 +104,8 @@ local function updateFluidMenu(menu, object)
 	-- Info tooltip
 	local infoTooltip = ISWorldObjectContextMenu.addToolTip()
 	infoTooltip:setName(objectName .. " " .. getText("ContextMenu_Info"))
+
+	-- TODO: inform player to equip a pipe wrench to view the plumbing helper
 	infoTooltip.description = "WIP"
 
 	-- Move the container info to the top, and attach the tooltip
