@@ -3,6 +3,8 @@ Plumb any number of rain barrels together, giving you water access in a basement
 [h2]What?[/h2]
 This mod slightly changes the logic around plumbing, making it so you can chain rain barrels together. This means a sink on any floor can have access to water.
 
+It also adds a very helpful Plumbing Helper menu. Activate it by right clicking a sink with a pipe wrench in your hand. When activated, this will highlight valid tiles you can place rain barrels on.
+
 [h2]Why?[/h2]
 My kitchen is in a basement, and I was disappointed I couldn't get water to my sink. The other mods (LG Plumbing) are either: AI generated, or too OP.
 
@@ -23,7 +25,7 @@ This mod works exactly how I wish it did in the vanilla game. However, the plumb
 If there's enough demand, I'd like to eventually:
 [list]
     [*]Add a "plumbed" status indicator. Telling you when a sink is or isn't plumbed, and why you can't get water from it (eg. the rain barrels are out of water)
-    [*]Add a "plumbing mode" that highlights the valid tiles for an external water source
+    [*][strike]Add a "plumbing mode" that highlights the valid tiles for an external water source[/strike] Done!
 [/list] 
 
 [h2]How does it work?[/h2]
