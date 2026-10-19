@@ -56,6 +56,8 @@ local function OnFillWorldObjectContextMenu(playerId, menu, worldObjects, test)
 	end
 
 	-- https://pzwiki.net/wiki/OnFillWorldObjectContextMenu
+	-- TODO: change this so it uses worldObjects directly
+	-- Will likely need to deduplicate it first
 	local firstObject = worldObjects[1]
 	if not firstObject then return end
 
