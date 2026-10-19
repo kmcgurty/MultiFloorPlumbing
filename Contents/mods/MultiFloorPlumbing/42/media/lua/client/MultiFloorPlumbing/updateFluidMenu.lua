@@ -108,6 +108,10 @@ local function updateFluidMenu(menu, object)
 	-- TODO: inform player to equip a pipe wrench to view the plumbing helper
 	infoTooltip.description = "WIP"
 
+	if not wrenchInInventory then
+		infoTooltip.description = infoTooltip.description .. "<LINE>Equip a pipe wrench to access the Plumbing Helper"
+	end
+
 	-- Move the container info to the top, and attach the tooltip
 	local infoOption
 	if #subMenu.options >= 1 then
