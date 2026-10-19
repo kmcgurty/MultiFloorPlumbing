@@ -129,20 +129,4 @@ local function updateFluidMenu(menu, object)
 	end
 end
 
----@class ValidateResult
----@field requirements string[]
----@field valid        boolean
-
----@param object IsoObject
----@return ValidateResult
-local function plumbValidator(object)
-	return {}
-end
-
----@param object IsoObject
----@return ValidateResult
-local function drinkValidator(object)
-	return {}
-end
-
 return updateFluidMenu

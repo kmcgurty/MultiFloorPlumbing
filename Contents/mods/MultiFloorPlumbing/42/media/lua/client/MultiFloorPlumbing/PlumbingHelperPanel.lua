@@ -229,7 +229,8 @@ end
 ---@param playerId integer
 ---@param object   IsoObject
 function PlumbingHelperPanel.open(playerId, object)
-	if MultiFloorPlumbing.activePlumbingHelperPanel then
+	if MultiFloorPlumbing.activePlumbingHelperPanel ~= nil then
+		---@diagnostic disable-next-line: undefined-field
 		MultiFloorPlumbing.activePlumbingHelperPanel:close()
 	end
 
