@@ -54,4 +54,23 @@ function ISMoveableSpriteProps:canPickUpMoveableInternal(character, square, obje
 	return result
 end
 
+---@param spriteManager IsoSpriteManager
+local function OnLoadedTileDefinitions(spriteManager)
+	local spriteIds = {
+		"carpentry_02_54",  -- RainCollector
+		"carpentry_02_122", -- RainCollectorRound
+		"carpentry_02_120", -- RainCollector_Tarp
+		"carpentry_02_124"  -- RainCollectorRound_Tarp
+	}
+
+	-- Set waterPiped on sprites that normally don't have it (RainCollector)
+	for _, spriteId in ipairs(spriteIds) do
+		local sprite = spriteManager:getSprite(spriteId)
+		local props = sprite:getProperties()
+		props:set(IsoFlagType.waterPiped)
+	end
+end
+
+Events.OnLoadedTileDefinitions.Add(OnLoadedTileDefinitions)
+
 log("Mod loaded.")
