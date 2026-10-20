@@ -25,6 +25,14 @@ local ColorMap = {
 	[SquareStatus.PLUMBED] = { 0, 0.62, 0.45, 0.1 }
 }
 
+local StatusLegend = {
+	{ status = SquareStatus.INVALID_OBJECT, desc = "Item on tile cannot be used for plumbing" },
+	{ status = SquareStatus.UNPLUMBED, desc = "Item needs to be plumbed (right click > plumb)" },
+	{ status = SquareStatus.UNPLUMBED_NO_SOURCE, desc = "Item cannot be plumbed, as there are no valid sources above" },
+	{ status = SquareStatus.VALID_SOURCE, desc = "Item can be plumbed from underneath" },
+	{ status = SquareStatus.PLUMBED, desc = "Item is correctly plumbed" }
+}
+
 -- RGBA 0-1
 local AreaColor = { 0.70, 0.65, 0.85, 0.01 }
 
@@ -43,14 +51,15 @@ local AreaColor = { 0.70, 0.65, 0.85, 0.01 }
 ---@field renderData RenderData
 local PlumbingHelperPanel = ISPanel:derive("PlumbingHelperPanel")
 
-local PanelWidth = 400
-local PanelHeight = 200
+local PanelWidth = 500
+local PanelHeight = 220
 
 local ButtonWidth = 75
 local ButtonHeight = 25
 
 local Margin = 10
-local TextHeight = 18
+
+local SmallLineHeight = getTextManager():getFontFromEnum(UIFont.Small):getLineHeight()
 
 function PlumbingHelperPanel:initialise()
 	ISPanel.initialise(self)
@@ -133,27 +142,19 @@ function PlumbingHelperPanel:render()
 	local x = 10
 	local y = 45
 	self:drawText("Legend:", x, y, 1, 1, 1, 1, UIFont.Small)
-	y = y + TextHeight
+	y = y + SmallLineHeight
 
 	self:drawRect(x, y + 3, 10, 10, 1, AreaColor[1], AreaColor[2], AreaColor[3])
-	local text = "3x3 area that can be used for plumbing"
-	self:drawText(text, x + 16, y, 1, 1, 1, 1, UIFont.Small)
-	y = y + TextHeight
+	local areaText = "3x3 area that can be used for plumbing"
+	self:drawText(areaText, x + 16, y, 1, 1, 1, 1, UIFont.Small)
+	y = y + SmallLineHeight
 
-	local legend = {
-		{ status = SquareStatus.INVALID_OBJECT, desc = "Item on tile cannot be used for plumbing" },
-		{ status = SquareStatus.UNPLUMBED, desc = "Item needs to be plumbed (right click > plumb)" },
-		{ status = SquareStatus.UNPLUMBED_NO_SOURCE, desc = "Item cannot be plumbed, as there are no valid sources above" },
-		{ status = SquareStatus.VALID_SOURCE, desc = "Item can be plumbed from underneath" },
-		{ status = SquareStatus.PLUMBED, desc = "Item is correctly plumbed" }
-	}
-
-	for _, line in ipairs(legend) do
+	for _, line in ipairs(StatusLegend) do
 		local color = ColorMap[line.status]
 		if color ~= nil then
 			self:drawRect(x, y + 3, 10, 10, 1, color[1], color[2], color[3])
 			self:drawText(line.desc, x + 16, y, 1, 1, 1, 1, UIFont.Small)
-			y = y + TextHeight
+			y = y + SmallLineHeight
 		end
 	end
 end
